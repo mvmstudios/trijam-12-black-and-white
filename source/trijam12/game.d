@@ -10,7 +10,7 @@ class Game : Renderable {
     private:
         static Game _instance;
 
-        Player player
+        Player player;
 
     public:
         override void update(float, float) {}
