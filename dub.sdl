@@ -5,3 +5,4 @@ copyright "Copyright © 2019, Maurice Schmidt"
 license "MIT"
 
 dependency "bindbc-sdl" version="~>0.6.1"
+versions "BindSDL_Image"

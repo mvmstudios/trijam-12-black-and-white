@@ -16,15 +16,27 @@ abstract class Entity : Renderable {
         Hitbox hitbox;
         
     public: 
-        this(Vector2!int initPos, int width, int height, string pathToSpritesheet) {
+        this(SDL_Renderer* renderer, Vector2!int initPos, int width, int height, string pathToSpritesheet, int spriteSrcWidth, int spriteSrcHeight) {
             this.position = initPos;
 
-            this.sprite = new Sprite(position.getX_ptr, position.getY_ptr, width, height);
+            this.sprite = new Sprite(renderer, "assets/sprites/notfound.png", position.getX_ptr, position.getY_ptr, width, height, spriteSrcWidth, spriteSrcHeight);
             this.hitbox = new Hitbox(position.getX_ptr, position.getY_ptr, width, height);
         }
 
         override void render(SDL_Renderer* renderer) {
             
+        }
+
+        Vector2!int getPosition() {
+            return position;
+        }
+
+        Sprite getSprite() {
+            return sprite;
+        }
+
+        Hitbox getHitbox() {
+            return hitbox;
         }
         
 }

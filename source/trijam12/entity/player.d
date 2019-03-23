@@ -7,7 +7,7 @@ class Player : Entity {
 
     public:
         this() {
-            super(Vector2!int(0, 0), 40, 40, pathToSpritesheet);
+            super(Vector2!int(0, 0), 40, 40, pathToSpritesheet, 32, 32);
         }
 
 }
