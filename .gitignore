@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/trijam12
+trijam12.so
+trijam12.dylib
+trijam12.dll
+trijam12.a
+trijam12.lib
+trijam12-test-*
+*.exe
+*.o
+*.obj
+*.lst
