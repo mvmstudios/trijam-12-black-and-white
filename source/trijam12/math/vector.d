@@ -10,6 +10,8 @@ struct Vector2(T) if (is(T: real)) {
         mixin template GetterSetter(string var) {
             mixin("T get%s() const { return %s; }".format(var.toUpper, var));
             mixin("void set%s(T v) {  %s = v; }".format(var.toUpper, var));
+
+            mixin("T get%s_ptr() const { return &%s; }".format(var.toUpper, var));
         }
 
     public:
@@ -25,6 +27,8 @@ struct Vector3(T) if (is(T: real)) {
         mixin template GetterSetter(string var) {
             mixin("T get%s() const { return %s; }".format(var.toUpper, var));
             mixin("void set%s(T v) {  %s = v; }".format(var.toUpper, var));
+
+            mixin("T get%s_ptr() const { return &%s; }".format(var.toUpper, var));
         }
 
     public:
@@ -41,6 +45,8 @@ struct Vector4(T) if (is(T: real)) {
         mixin template GetterSetter(string var) {
             mixin("T get%s() const { return %s; }".format(var.toUpper, var));
             mixin("void set%s(T v) {  %s = v; }".format(var.toUpper, var));
+
+            mixin("T get%s_ptr() const { return &%s; }".format(var.toUpper, var));
         }
 
     public:
