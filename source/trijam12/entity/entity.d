@@ -9,22 +9,27 @@ import trijam12.render.sprite;
 
 abstract class Entity : Renderable {
 
-    private: 
+    public: 
         Vector2!int position;
 
         Sprite sprite;
         Hitbox hitbox;
         
-    public: 
-        this(SDL_Renderer* renderer, Vector2!int initPos, int width, int height, string pathToSpritesheet, int spriteSrcWidth, int spriteSrcHeight) {
+        this(Vector2!int initPos, Sprite sprite, Hitbox hitbox) {
             this.position = initPos;
 
-            this.sprite = new Sprite(renderer, "assets/sprites/notfound.png", position.getX_ptr, position.getY_ptr, width, height, spriteSrcWidth, spriteSrcHeight);
-            this.hitbox = new Hitbox(position.getX_ptr, position.getY_ptr, width, height);
+            this.sprite = sprite;
+            this.hitbox = hitbox;
+        }
+
+        override void update(float deltaTime, float globalTime) {
+            sprite.update(deltaTime, globalTime);
+            hitbox.update(deltaTime, globalTime);
         }
 
         override void render(SDL_Renderer* renderer) {
-            
+            sprite.render(renderer);
+            hitbox.render(renderer); // RENDER HITBOX |DEBUG|
         }
 
         Vector2!int getPosition() {

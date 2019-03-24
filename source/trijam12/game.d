@@ -8,22 +8,21 @@ import trijam12.render.renderable;
 class Game : Renderable {
 
     private:
-        static Game _instance;
+        SDL_Renderer* renderer;
 
         Player player;
 
     public:
-        override void update(float, float) {}
-
-        override void render(SDL_Renderer* renderer) {
-
+        this(SDL_Renderer* renderer) {
+            this.player = new Player(renderer);
         }
 
-        static Game instance() {
-            if (!_instance)
-                _instance = new Game;
+        override void update(float deltaTime, float globalTime) {
+            player.update(deltaTime, globalTime);
+        }
 
-            return _instance;
+        override void render(SDL_Renderer* renderer) {
+            player.render(renderer);
         }
 
 }

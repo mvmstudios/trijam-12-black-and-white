@@ -55,7 +55,7 @@ class Sprite : Renderable {
             if (!playAnimation)
                 return;
 
-            if (!(globalTime % 0.1 == 0))
+            if (!(round(globalTime) % 2 == 0))
                 return;
 
             currentSprite++;
@@ -65,10 +65,11 @@ class Sprite : Renderable {
         }
 
         override void render(SDL_Renderer* renderer) {
-            SDL_Rect srcRect = SDL_Rect(srcWidth * currentSprite, 0, srcWidth, srcHeight);
+            SDL_Rect srcRect = SDL_Rect(srcWidth * currentSprite, 0, srcHeight, srcWidth);
             SDL_Rect destRect = SDL_Rect(*x, *y, width, height);
 
-            SDL_RenderCopyEx(renderer, spriteTexture, &srcRect, &destRect, 0, NULL, rotated);
+            // SDL_Renderer*,SDL_Texture*,const(SDL_Rect)*,const(SDL_Rect)*,const(double),const(SDL_Point)*,const(SDL_RendererFlip)
+            SDL_RenderCopyEx(renderer, spriteTexture, &srcRect, &destRect, 0.0, null, cast(SDL_RendererFlip) rotated);
         }
 
         int getCurrentSprite() {
