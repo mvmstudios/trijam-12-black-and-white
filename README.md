@@ -1,1 +1,1 @@
-
+This game dosn't work! And the development is inactive
